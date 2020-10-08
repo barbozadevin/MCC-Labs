@@ -95,7 +95,7 @@ class code extends walsh{
 
     // Calculation of Spread data for each user
     void calculation(){
-        System.out.println("The message after encoding:  ");
+        System.out.println("The message after superimposing:  ");
         for(int i=0;i < ae.length; i++){
             int res=0;
 
