@@ -5,19 +5,19 @@ public class TDMA {
     int t;
     int slot;
     int [] delay;
-    TDMA(int n,int time,int s){
-       delay = new int[n];
-       t = time;
-       slot = s;
+    TDMA(int n,int time,int s){     //n : number of channels, time : delay, s : time slice
+        delay = new int[n];
+        t = time;
+        slot = s;
     }
-
-    public void getDelay(){
+    // Method to get the time delay for each channel in order to transmit it's data
+    public void getData(){
         for (int x = 0;x < delay.length;x++){
-            System.out.println("Enter the delay for channel "+(x+1)+" : ");
+            System.out.println("Enter the time delay for channel "+(x+1)+" : ");
             delay[x] = in.nextInt();
         }
     }
-
+    //Method to check if the transmission of data from all channels is complete or not
     public boolean checkCompletion(){
         for (int i : delay){
             if (i != 0){
@@ -26,7 +26,7 @@ public class TDMA {
         }
         return true;
     }
-
+    //Method to show the exact time slice allotted to each channel in each cycle
     public void generateResults(){
         int curr = 0;
         for (int j = 1;!this.checkCompletion();j++){
@@ -34,9 +34,8 @@ public class TDMA {
             curr = 0;
             for (int i = 0;i < delay.length;i++){
                 if (delay[i] > t){
-                    delay[i] -= t;
-                    System.out.println("Channel "+(i+1)+" has been assigned slot "+curr+" to "+(curr+slot));
-                    curr += slot+1;
+                    delay[i] = t-1;
+                    System.out.println("Channel "+(i+1)+" has not been assigned any slot");
                 }else if(delay[i] < t && delay[i] > 0){
                     delay[i] = 0;
                     System.out.println("Channel "+(i+1)+" has been assigned slot "+curr+" to "+(curr+slot));
@@ -53,12 +52,12 @@ public class TDMA {
         int n, time, slot;
         System.out.println("Enter the number of Channels: ");
         n = in.nextInt();
-        System.out.println("Enter the threshold: ");
+        System.out.println("Enter the delay: ");
         time = in.nextInt();
         System.out.println("Enter the time slice for each Channel: ");
         slot = in.nextInt();
         TDMA t = new TDMA(n,time,slot);
-        t.getDelay();
+        t.getData();
         t.generateResults();
     }
 }
