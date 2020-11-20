@@ -76,6 +76,7 @@ public class A5 {
         z[0] = bit;
     }
 
+    // Function to initially fill registers X, Y & Z
     public void fillXYZ(){
         int bitX, bitY, bitZ;
         for(int i=0;i < 64;i++){
@@ -89,6 +90,7 @@ public class A5 {
         }
     }
 
+    // Function to find the Majority Bit
     public int majorityFunction(int x,int y,int z){
         int co = 0, cz = 0;
         if(x == 0)
@@ -109,6 +111,7 @@ public class A5 {
         return 1;
     }
 
+    // Function to Encrypt the text
     public void encrypt(){
         int n = binaryPT.length;
         int temp, max, key;
@@ -133,6 +136,7 @@ public class A5 {
         }
     }
 
+    // Function to Decrypt the text
     public void decrypt(){
         binaryDT = "";
         for(int i = 0;i < keyStream.length;i++){
@@ -148,6 +152,7 @@ public class A5 {
                 .collect(Collectors.joining());
     }
 
+    // Function to Fetch results
     public void getResults(){
         System.out.println("Plain Text: "+pt);
         System.out.print("Key Stream: ");
